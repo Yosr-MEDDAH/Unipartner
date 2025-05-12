@@ -1,0 +1,44 @@
+.gender-buttons,
+.skills-buttons,
+.interests-buttons,
+.red-flags-buttons {
+  display: flex;
+  /* gap: 10px;
+  margin-bottom: 20px; */
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.gender-button,
+.skills-button,
+.interests-button,
+.red-flags-button {
+  background: #e2d8d8;
+  color: #423a3c;
+  padding: 10px 15px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  box-shadow: -5px -5px 15px rgba(255, 255, 255, 0.1),
+    5px 5px 15px rgba(0, 0, 0, 0.35);
+    flex: 1; 
+    margin: 1%;
+    display: flex;
+    align-items: center; 
+}
+.gender-button:hover,
+.skills-button:hover,
+.interests-button:hover,
+.red-flags-button:hover {
+  background: #cd6565c7;
+  color: #fff;
+}
+
+/* Ajout d'icônes */
+.gender-button i,
+.skills-button i,
+.interests-button i,
+.red-flags-button i {
+  margin-right: 8px;
+}

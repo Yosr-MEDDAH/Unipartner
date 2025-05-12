@@ -1,0 +1,11 @@
+/* Add this to your existing styles or create a new style file */
+#confirmationModal {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 1050;
+  }
+  
+  /* Customize the modal appearance if needed */
+  

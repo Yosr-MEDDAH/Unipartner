@@ -1,0 +1,106 @@
+/* 
+  .carousel-wrapper{
+      width:100vw;
+      height: 100vh;
+      overflow: hidden;
+  }
+  .carousel-wrapper .caption {
+      position:absolute;
+      left:50px;
+      bottom: 50px;
+      font-size: 40px;
+      font-weight: bold;
+  } */
+  .paralax{
+    position: absolute;
+    height: 100%;
+}
+
+
+.paralax-item{
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+  }
+  .p-item1{
+    background: url("https://i.pinimg.com/564x/d2/a2/42/d2a2425c1a8f659d7bf924b2d58f8773.jpg") center/cover no-repeat;
+  }
+  .p-item3{
+    background: url("../../../assets/matching.png") bottom/100% no-repeat;
+    background-size: auto;
+    background-position: bottom right;
+    z-index: 2;
+  }
+  .p-item4{
+    /* position: absolute; */
+    top: 0;
+    left: 0;
+    width: 10000%;
+    /* height: 30px; */
+    content: '';
+    background: url("../../../assets/stars.png") repeat;
+    background-size: contain;
+    background-position: center;
+    animation: marquee 20s linear infinite;
+    opacity: 0.1;
+  }
+  .p-item4::before{
+   
+    top: 0;
+    left: 0;
+    width: 1000%;
+    height: 100%;
+    background: url("../../../assets/stars.png") repeat-x;
+    background-size: contain;
+    background-position: center;
+    animation: marquee 20s linear infinite;
+    z-index: 100;
+    opacity: 0.1;
+  }
+  
+  
+  @keyframes marquee{
+    0%{
+        transform: translate3d(0,0,0);
+    }
+    100%{
+        transform: translate3d(-200vw,0,0);
+    }
+  }
+  .container{
+    position: relative;
+    z-index: 1;
+    max-width: 1000px;
+    margin: 0 auto;
+    margin-top: 100vh;
+  }
+  
+  .content-header{
+    font-family: sans-serif;
+    color: white;
+    text-align: justify !important;
+    text-transform: uppercase;
+    /* margin-left: 400px; */
+    margin-right: -20%;
+  }
+  .content-header h1{
+    font-size: 70px;
+    font-weight: 600;
+    color: white;
+    margin-bottom: 20px;
+    
+  }
+  .content-header h2{
+    font-size: 30px;
+    font-weight: 500;
+    color: white;
+    
+  
+  }
+  .content{
+    width: 1000px;
+    height: auto;
+    margin-right: 40px;
+  }

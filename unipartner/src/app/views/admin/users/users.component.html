@@ -1,0 +1,207 @@
+<!-- loading -->
+<div *ngIf="loading">
+  <div class="row">
+    <div class="col">
+      <img
+        style="z-index: 0"
+        src="https://i.pinimg.com/originals/d9/f2/15/d9f21515b1e38d83e94fdbce88f623b6.gif"
+        alt=""
+        class="d-block m-auto"
+      />
+    </div>
+  </div>
+</div>
+<div *ngIf="!connection && !loading">
+  <img
+    src="../../../../assets/error.gif"
+    alt="failed to connect to the server"
+    class="d-block m-auto my-5"
+    style="height: 500px; border-radius: 50%; border: 7px solid #cba9a6"
+  />
+  <div class="alert alert-danger">
+    <p class="h3 text-light" style="text-align: center">
+      Connection Problem...<BR />Please try again..!
+    </p>
+  </div>
+</div>
+<div class="container-fluid py-4" *ngIf="!loading && connection">
+  <div class="row">
+    <div class="col-12">
+      <div class="card mb-4">
+        <div class="card-header pb-0">
+          <h6>Users</h6>
+        </div>
+        <div class="card-body px-0 pt-0 pb-2">
+          <div class="input-group">
+            <input
+              type="text"
+              name="toSearch"
+              [(ngModel)]="searchKey"
+              (ngModelChange)="search()"
+              id=""
+              class="form-control"
+              placeholder="Search user by name"
+            />
+            <button
+              class="btn bg-gradient-dark my-3 mx-2 my-sm-0"
+              type="submit"
+            >
+              <i class="fa fa-search"></i>
+            </button>
+          </div>
+          <div class="my-1" style="margin-left: 5px"></div>
+          <div class="table-responsive p-0" id="print-section">
+            <table
+              class="table align-items-center mb-0"
+              *ngIf="users.length != 0"
+            >
+              <thead>
+                <tr>
+                  <th
+                    class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7"
+                  >
+                    Name &nbsp; <i class="fa fa-sort"></i>
+                  </th>
+                  <th
+                    class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2"
+                  >
+                    Lastname
+                  </th>
+                  <th
+                    class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7"
+                  >
+                    Email
+                  </th>
+                  <th
+                    class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7"
+                  >
+                    Reports
+                  </th>
+
+                  <th
+                    class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7"
+                  >
+                    Delete
+                  </th>
+                </tr>
+              </thead>
+              <tbody *ngFor="let item of users; let index = index">
+                <tr *ngIf="item.userRole!=='ADMIN'">
+                  <td>{{ item.name }}</td>
+                  <td>{{ item.lastname }}</td>
+                  <td>{{ item.email }}</td>
+
+                  <td>
+                    <button
+                      class="btn mb-0"
+                      type="button"
+                      (click)="UserReports(item.id); $event.preventDefault()"
+                      data-toggle="modal"
+                      data-target="#exampleModal4"
+                    >
+                      <i
+                        class="fa-regular fa-flag text-dark"
+                        aria-hidden="true"
+                      ></i
+                      >&ThinSpace;&ThinSpace;<span class="text-danger"></span>
+                    </button>
+                  </td>
+                  <td>
+                    <button
+                      class="btn mb-0"
+                      type="button"
+                      (click)="deleteUser(item.id); $event.preventDefault()"
+                    >
+                      <i class="fa fa-trash text-danger" aria-hidden="true"></i
+                      >&ThinSpace;&ThinSpace;<span class="text-danger"></span>
+                    </button>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+            <div *ngIf="users.length == 0" class="card text-center">
+              <div class="card-header">
+                <h2 style="color: #1a0c0e">Oops ...</h2>
+                <h4 style="color: #1a0c0e">No data</h4>
+              </div>
+              <div class="card-body">
+                <h5 class="card-title" style="color: #1a0c0e">
+                  No users to show..
+                </h5>
+                <img
+                  height="300px"
+                  width="300px"
+                  src="https://www.kindpng.com/picc/m/691-6916285_no-results-found-hd-png-download.png"
+                  alt="no data found"
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- ========================= Reports modal -->
+<div
+  class="modal fade"
+  id="exampleModal4"
+  tabindex="-1"
+  role="dialog"
+  aria-labelledby="exampleModalLabel"
+  aria-hidden="false"
+>
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Reports</h5>
+        <button
+          type="button"
+          class="close"
+          data-dismiss="modal"
+          aria-label="Close"
+        >
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="card mb-4">
+          <div class="card-body px-0 pt-0 pb-2">
+            <div class="table-responsive p-0">
+              <table
+                class="table align-items-center mb-0"
+                *ngIf="reportsLength != 0"
+              >
+                <thead>
+                  <tr>
+                    <th class="table-primary">Report Type</th>
+                    <th class="table-danger">By</th>
+                    <th class="table-danger">At</th>
+                    <th class="table-primary">Delete</th>
+                  </tr>
+                </thead>
+                <tbody *ngFor="let report of reports">
+                  <tr>
+                    <td class="table-primary">{{ report.typeSignal }}</td>
+                    <td class="table-danger">{{ report.reportedBy.name }}</td>
+                    <td class="table-danger">{{ report.reportedAt | date }}</td>
+                    <td class="table-primary">
+                      <button type="button" class="btn btn-outline-dark" (click)="deleteReport(report.id)">
+                        <i class="fa fa-trash"></i>
+                      </button>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div *ngIf="reportsLength == 0" class="text-bold">
+              <div class="alert alert-warning">No reports..</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+

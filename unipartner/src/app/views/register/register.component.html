@@ -1,0 +1,494 @@
+<!-- <section>
+    <div class="color"></div>
+    <div class="color"></div>
+    <div class="color"></div>
+    <div class="box">
+        <div class="square" style="--i: 0"></div>
+        <div class="square" style="--i: 1"></div>
+        <div class="square" style="--i: 2"></div>
+        <div class="square" style="--i: 3"></div>
+        <div class="square" style="--i: 4"></div>
+        <div class="container">
+            <form
+class="form signup"
+[formGroup]="signupForm"
+(ngSubmit)="onSubmit()"
+>
+<h2>signup</h2>
+<div class="inputBox">
+<input type="text" formControlName="name" required />
+<i class="fa-solid fa-user"></i>
+<span>Firstname</span>
+<div
+    *ngIf="
+    signupForm.get('name')!.hasError('required') &&
+    signupForm.get('name')!.touched
+    "
+    class="invalid-msg"
+>
+    Firstname is required.
+</div>
+<div
+    class="invalid-msg"
+    *ngIf="signupForm.get('name')!.hasError('minlength')"
+>
+    Firstname must be at least 3 characters long.
+</div>
+<div
+    class="invalid-msg"
+    *ngIf="signupForm.get('name')!.hasError('pattern')"
+>
+    Firstname can only contain alphanumeric characters and underscores.
+</div>
+</div>
+<div class="inputBox">
+<input type="text" formControlName="lastname" required />
+<i class="fa-regular fa-user"></i>
+<span>Lastname</span>
+<div
+    *ngIf="
+    signupForm.get('lastname')!.hasError('required') &&
+    signupForm.get('lastname')!.touched
+    "
+    class="invalid-msg"
+>
+    Lastname is required.
+</div>
+<div
+    class="invalid-msg"
+    *ngIf="signupForm.get('lastname')!.hasError('minlength')"
+>
+    Lastname must be at least 3 characters long.
+</div>
+<div
+    class="invalid-msg"
+    *ngIf="signupForm.get('lastname')!.hasError('pattern')"
+>
+    Lastname can only contain alphanumeric characters and underscores.
+</div>
+</div>
+
+<div class="inputBox">
+<input type="text" formControlName="email" required />
+<i class="fa-regular fa-envelope"></i>
+<span>email address</span>
+<div
+    *ngIf="
+    signupForm.get('email')!.hasError('required') &&
+    signupForm.get('email')!.touched
+    "
+    class="invalid-msg"
+>
+    Email is required.
+</div>
+<div
+    class="invalid-msg"
+    *ngIf="signupForm.get('email')!.hasError('email')"
+>
+    Invalid email address.
+</div>
+<div
+    class="invalid-msg"
+    *ngIf="signupForm.get('email')!.hasError('pattern')"
+>
+    Email does not match the required pattern.
+</div>
+</div>
+<div class="inputBox">
+<input
+    [type]="passwordVisible ? 'text' : 'password'"
+    formControlName="pwd"
+    required
+/>
+<i class="fa-solid fa-lock"></i>
+<span>create password</span>
+<i
+    *ngIf="passwordVisible; else hideIcon"
+    class="fa fa-eye"
+    id="pswd"
+    (click)="togglePasswordVisibility()"
+></i>
+<ng-template #hideIcon
+    ><i
+    class="fa-solid fa-eye-slash"
+    id="pswd"
+    (click)="togglePasswordVisibility()"
+    ></i
+></ng-template>
+<span>create password</span>
+<div
+    *ngIf="
+    signupForm.get('pwd')!.hasError('required') &&
+    signupForm.get('pwd')!.touched
+    "
+    class="invalid-msg"
+>
+    Password is required.
+</div>
+<div
+    class="invalid-msg"
+    *ngIf="signupForm.get('pwd')!.hasError('minlength')"
+>
+    Password must be at least 8 characters long.
+</div>
+<div
+    class="invalid-msg"
+    *ngIf="
+    signupForm.get('pwd')!.hasError('passwordStrength') &&
+    signupForm.get('pwd')!.touched
+    "
+>
+    Password must contain at least one uppercase letter, one lowercase
+    letter, and one number.
+</div>
+</div>
+
+<div class="inputBox">
+    <input type="file" formControlName="photo" required />
+    <i class="fa-solid fa-image"></i>
+    <span>Photo</span>
+    <div
+        *ngIf="
+        signupForm.get('photo')!.hasError('required') &&
+        signupForm.get('photo')!.touched
+        "
+        class="invalid-msg"
+    >
+    Photo is required.
+    </div>
+    <div
+        class="invalid-msg"
+        *ngIf="signupForm.get('photo')!.hasError('minlength')"
+    >
+    Photo must be at least 3 characters long.
+    </div>
+    <div
+        class="invalid-msg"
+        *ngIf="signupForm.get('photo')!.hasError('pattern')"
+    >
+        Photo can only contain alphanumeric characters and underscores.
+    </div>
+    </div> -->
+
+<!-- <div class="inputBox"> -->
+<!-- <input type="submit" value="Next Step" [disabled]="!signupForm.valid" /> -->
+<!-- <input type="submit" value="Next Step" /> -->
+<!-- </div> -->
+<!-- <p>Already have an account? <a href="#">login</a></p> -->
+<!-- <div class="btns">
+    <button class="btn btn-outline-light" type="submit">Next Step</button>
+</div> -->
+<!-- </form> -->
+
+<!-- 
+        </div>
+    </div>
+    
+</section> -->
+<!-- <div class="inputBox">
+<input
+    [type]="confirmPasswordVisible ? 'text' : 'password'"
+    formControlName="confirmPassword"
+    required
+/>
+<i class="fa-solid fa-lock"></i>
+<i
+    *ngIf="confirmPasswordVisible; else hideIcon_cp"
+    class="fa fa-eye"
+    id="pswd"
+    (click)="toggleConfirmPasswordVisibility()"
+></i>
+<ng-template #hideIcon_cp
+    ><i
+    class="fa-solid fa-eye-slash"
+    id="pswd"
+    (click)="toggleConfirmPasswordVisibility()"
+    ></i
+></ng-template>
+<span>confirm password</span>
+<div
+    *ngIf="
+    signupForm.get('confirmPassword')!.hasError('required') &&
+    signupForm.get('confirmPassword')!.touched
+    "
+    class="invalid-msg"
+>
+    Confirm Password is required.
+</div>
+<div
+*ngIf="signupForm.hasError('passwordMismatch') && signupForm.get('confirmPassword')!.touched"
+class="invalid-msg"
+[class.ng-valid]="!signupForm.get('confirmPassword')?.hasError('passwordMismatch')"
+[class.ng-invalid]="signupForm.get('confirmPassword')?.hasError('passwordMismatch')"
+>
+Passwords do not match.
+</div>
+
+
+</div> -->
+<!-- signup.component.html -->
+<section>
+  <div class="color"></div>
+  <div class="color"></div>
+  <div class="color"></div>
+  <div class="box">
+    <div
+      class="square"
+      *ngFor="let _ of [0, 1, 2, 3, 4]; let i = index"
+      [style.--i]="i"
+    ></div>
+    <div class="container step-container">
+      <div *ngIf="currentStep === 1">
+        <form
+          class="form signup"
+          [formGroup]="signupForm"
+          (ngSubmit)="onSubmit()"
+        >
+          <h2>Signup - Step 1</h2>
+          <div class="inputBox">
+            <input type="text" formControlName="name" required  name="name"/>
+            <i class="fa-solid fa-user"></i>
+            <span>Firstname</span>
+            <div
+              *ngIf="
+                signupForm.get('name')!.hasError('required') &&
+                signupForm.get('name')!.touched
+              "
+              class="invalid-msg"
+            >
+              Firstname is required.
+            </div>
+            <div
+              class="invalid-msg"
+              *ngIf="signupForm.get('name')!.hasError('minlength')"
+            >
+              Firstname must be at least 3 characters long.
+            </div>
+            <div
+              class="invalid-msg"
+              *ngIf="signupForm.get('name')!.hasError('pattern')"
+            >
+              Firstname can only contain alphanumeric characters and
+              underscores.
+            </div>
+          </div>
+          <div class="inputBox">
+            <input type="text" formControlName="lastname" required name="lastname" />
+            <i class="fa-regular fa-user"></i>
+            <span>Lastname</span>
+            <div
+              *ngIf="
+                signupForm.get('lastname')!.hasError('required') &&
+                signupForm.get('lastname')!.touched
+              "
+              class="invalid-msg"
+            >
+              Lastname is required.
+            </div>
+            <div
+              class="invalid-msg"
+              *ngIf="signupForm.get('lastname')!.hasError('minlength')"
+            >
+              Lastname must be at least 3 characters long.
+            </div>
+            <div
+              class="invalid-msg"
+              *ngIf="signupForm.get('lastname')!.hasError('pattern')"
+            >
+              Lastname can only contain alphanumeric characters and underscores.
+            </div>
+          </div>
+
+          <div class="inputBox">
+            <input type="text" formControlName="email" required name="email"/>
+            <i class="fa-regular fa-envelope"></i>
+            <span>email address</span>
+            <div
+              *ngIf="
+                signupForm.get('email')!.hasError('required') &&
+                signupForm.get('email')!.touched
+              "
+              class="invalid-msg"
+            >
+              Email is required.
+            </div>
+            <div
+              class="invalid-msg"
+              *ngIf="signupForm.get('email')!.hasError('email')"
+            >
+              Invalid email address.
+            </div>
+            <div
+              class="invalid-msg"
+              *ngIf="signupForm.get('email')!.hasError('pattern')"
+            >
+              Email does not match the required pattern.
+            </div>
+          </div>
+          <div class="inputBox">
+            <input
+              [type]="passwordVisible ? 'text' : 'password'"
+              formControlName="pwd"
+              required
+              name="pwd"
+            />
+            <i class="fa-solid fa-lock"></i>
+            <span>create password</span>
+            <i
+              *ngIf="passwordVisible; else hideIcon"
+              class="fa fa-eye"
+              id="pswd"
+              (click)="togglePasswordVisibility()"
+            ></i>
+            <ng-template #hideIcon
+              ><i
+                class="fa-solid fa-eye-slash"
+                id="pswd"
+                (click)="togglePasswordVisibility()"
+              ></i
+            ></ng-template>
+            <span>create password</span>
+            <div
+              *ngIf="
+                signupForm.get('pwd')!.hasError('required') &&
+                signupForm.get('pwd')!.touched
+              "
+              class="invalid-msg"
+            >
+              Password is required.
+            </div>
+            <div
+              class="invalid-msg"
+              *ngIf="signupForm.get('pwd')!.hasError('minlength')"
+            >
+              Password must be at least 8 characters long.
+            </div>
+            <div
+              class="invalid-msg"
+              *ngIf="
+                signupForm.get('pwd')!.hasError('passwordStrength') &&
+                signupForm.get('pwd')!.touched
+              "
+            >
+              Password must contain at least one uppercase letter, one lowercase
+              letter, and one number.
+            </div>
+          </div>
+
+          <div class="inputBox">
+            <input type="text" formControlName="photo" required name="photo" />
+            <i class="fa-solid fa-image"></i>
+            <span>Photo</span>
+            <div
+              *ngIf="
+                signupForm.get('photo')!.hasError('required') &&
+                signupForm.get('photo')!.touched
+              "
+              class="invalid-msg"
+            >
+              Photo is required.
+            </div>
+            <div
+              class="invalid-msg"
+              *ngIf="signupForm.get('photo')!.hasError('minlength')"
+            >
+              Photo must be at least 3 characters long.
+            </div>
+            <div
+              class="invalid-msg"
+              *ngIf="signupForm.get('photo')!.hasError('pattern')"
+            >
+              Photo can only contain alphanumeric characters and underscores.
+            </div>
+          </div>
+          <div class="inputBox">
+            <input
+              type="button"
+              (click)="nextStep()"
+              value="Next Step"
+              [disabled]="!isNextStepEnabled()"
+            />
+          </div>
+          <p>Already registred? <a routerLink="/login">Signin</a></p>
+        </form>
+      </div>
+      <div *ngIf="currentStep === 2">
+        <form class="form" [formGroup]="signupForm" (ngSubmit)="onSubmit()">
+          <h2>Signup - Step 2</h2>
+
+          <h2>Your Gender?</h2>
+          <div class="gender-buttons">
+            <button
+              type="button"
+              class="gender-button male"
+              [class.selected]="userData.gender === 'male'"
+              (click)="selectGender('male')"
+            >
+              <i class="fas fa-mars"></i> Male
+            </button>
+            <button
+              type="button"
+              class="gender-button female"
+              [class.selected]="userData.gender === 'female'"
+              (click)="selectGender('female')"
+            >
+              <i class="fas fa-venus"></i> Female
+            </button>
+          </div>
+          <h2>Your Skills?</h2>
+          <div class="skills-buttons">
+            <button
+              *ngFor="let skill of skills"
+              class="skills-button"
+              [class.selected]="userData.skills.includes(skill.name)"
+              type="button"
+              (click)="toggleSkill(skill.name)"
+            >
+              <i [class]="skill.icon"></i>
+              {{ skill.name }}
+            </button>
+          </div>
+          <h2>Your Interests?</h2>
+          <div class="interests-buttons">
+            <button
+              *ngFor="let interest of interests"
+              class="interests-button"
+              [class.selected]="userData.interests!.includes(interest.name)"
+              type="button"
+              (click)="toggleInterest(interest.name)"
+            >
+              <i [class]="interest.icon"></i>
+              {{ interest.name }}
+            </button>
+          </div>
+          <h2>Your Red Flags?</h2>
+          <div class="red-flags-buttons">
+            <button
+              *ngFor="let redFlag of redFlags"
+              class="red-flags-button"
+              [class.selected]="userData.redFlags!.includes(redFlag.name)"
+              type="button"
+              (click)="toggleRedFlag(redFlag.name)"
+            >
+              <i [class]="redFlag.icon"></i>
+              {{ redFlag.name }}
+            </button>
+          </div>
+
+         
+          
+          <div class="inputBox">
+            <input type="button" (click)="prevStep()" value="Previous Step" />
+            <input
+            class="mt-3"
+              type="submit"
+              value="Confirm"
+              [disabled]="!isConfirmButtonEnabled()"
+            />
+          </div>
+        </form>
+      </div>
+      <!-- Add more sections for additional steps as needed -->
+    </div>
+  </div>
+</section>

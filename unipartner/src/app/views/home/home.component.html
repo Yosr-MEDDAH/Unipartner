@@ -1,0 +1,52 @@
+<header>
+  <a routerLink="/" class="logo"><img src="../unipartner.png" alt="" />UniPartner</a>
+  <ul class="navlist" id="navlist">
+    <li>
+      <a routerLink="/">Langues</a>
+    </li>
+    <li>
+      <a routerLink="/register">Inscription</a>
+    </li>
+    <li>
+      <a routerLink="/login">Connexion</a>
+    </li>
+    <li>
+      <a routerLink="/team">À propos</a>
+    </li>
+    <li>
+      <a routerLink="/contact">Contact</a>
+    </li>
+  </ul>
+  <div class="bx bx-menu" id="menu-icon" (click)="menu()"></div>
+</header>
+
+<section class="hero">
+  <div class="hero-text" [@fadeIn]="animationState">
+    <h5>Trouvez votre partenaire idéal</h5>
+    <h4>UniPartner - Partenaires jusqu'à la fin</h4>
+    <h1>Votre collaboration,<br />Votre voie vers la réussite..</h1>
+    <p>
+      Brisons les barrières, connectons les esprits créatifs, unissons les
+      ambitions et créons des collaborations académiques harmonieuses.
+    </p>
+    <a routerLink="/plus">Découvrir plus</a>
+    <a routerLink="/login" class="ctaa"><i class="ri-play-fill"></i>Commencer</a>
+  </div>
+  <div class="hero-img" [@fadeIn]="animationState">
+    <img
+      src="../assets/3D.png"
+      alt=""
+      style="border-radius: 100%"
+    />
+  </div>
+ 
+</section>
+<div class="icons" [@fadeIn]="animationState">
+  <a routerLink="/contact"><i class="ri-map-pin-line"></i></a>
+  <a routerLink="/contact"><i class="ri-phone-line"></i></a>
+  <a routerLink="/contact"><i class="ri-mail-line"></i></a>
+</div>
+<!-- <div class="scroll-down">
+  <a><i class="ri-arrow-down-s-fill"></i></a>
+</div> -->
+

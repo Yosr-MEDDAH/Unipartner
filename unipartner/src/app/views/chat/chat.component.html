@@ -1,0 +1,44 @@
+<div class="container">
+  <div class="chat-list">
+
+    <div *ngFor="let item of chats" class="conversation-item">
+      <img [src]="(item.user1.email !== currentUser) ? item.user1.photo : item.user2.photo" class="sender-image">
+      <span (click)="getConversationById(item.id)" [class.pointer-cursor]="item.user1.email !== currentUser">
+        {{ (item.user1.email !== currentUser) ? item.user1.name + ' ' + item.user1.lastname : item.user2.name + ' ' + item.user2.lastname }}
+      </span>
+      
+  </div>
+</div>
+    <div class="messages">
+      <div class="messages-header">
+        <h2>{{ chattingWithName }}</h2>
+      </div>
+      <hr />
+      <!--  -->
+      <div class="chat-area">
+        <div
+        class="chat-bubble-container"
+        *ngFor="let item of messages; let i = index"
+        [ngClass]="{'sender':item.fromUser.email===currentUser}"
+      >
+        <div class="chat-bubble">
+          <span class="text-bold"> {{item.fromUser.name}}</span><br>
+          {{item.text}}
+
+          <span class="chat-date">{{ stringAsDate(item.createdAt) | date:'HH:mm' }}</span>
+        </div>
+      </div>
+      </div>
+      <div class="input-area">
+        <form #formulaire="ngForm" (ngSubmit)="addMsg(formulaire)">
+          <div class="input-group">
+            <input type="text" name="text" [(ngModel)]="message" class="form-control my-1" placeholder="Enter your message...">
+            <button type="submit" class="btn btn-primary my-1">
+              <i class="fa fa-paper-plane"></i>
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+  

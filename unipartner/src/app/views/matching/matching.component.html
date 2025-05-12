@@ -1,0 +1,164 @@
+<!-- <header>
+  <div>
+    <h1>Matching</h1>
+  </div>
+</header>
+<div *ngIf="users.length > 0; else emptyTemplate" class="users">
+  <ng-container *ngFor="let user of users; let i = index">
+    <div
+    [style.zIndex]="users.length - i"
+    *ngIf="!removedUsers.has(i)"
+    (mousedown)="mouseDown($event, i)"
+    (mousemove)="mouseMove($event, i)"
+    (mouseup)="mouseUp(i)"
+    id="{{ 'card-' + i }}"
+    [ngClass]="{ 'swipe-active': isSwipeActive(i) }"
+  >
+    <div>
+      <img [src]="user.photo" alt="" height="50px" />
+      <div>
+        <h2>{{ user.name}} {{ user.lastname }}</h2>
+        <p>{{ user.gender }}</p>
+      </div>
+    </div>
+
+    <i
+      class="icon reject-icon"
+      [ngClass]="{ danger: isSwipeActive(i) && endX - startX < 0 }"
+      >❌</i
+    >
+    <i
+      class="icon accept-icon"
+      [ngClass]="{ primary: isSwipeActive(i) && endX - startX > 0 }"
+      >✔️</i
+    >
+  </div>
+</ng-container>
+</div>
+<ng-template #emptyTemplate>
+  <div class="center">
+    <i class="checkmark-icon"></i>
+    <p>All Swiped!</p>
+  </div>
+</ng-template> -->
+<header>
+  <div>
+    <h1>Matching</h1>
+  </div>
+</header>
+<div *ngIf="loading">
+  <div class="row">
+    <div class="col">
+      <img
+        style="z-index: 0"
+        src="https://i.pinimg.com/originals/d9/f2/15/d9f21515b1e38d83e94fdbce88f623b6.gif"
+        alt=""
+        class="d-block m-auto"
+      />
+    </div>
+  </div>
+</div>
+<div *ngIf="!loading && users.length > 0; else emptyTemplate" class="users container">
+  <ng-container *ngFor="let user of users; let i = index">
+    <div
+    [ngStyle]="{'z-index': users.length - i}"
+      id="{{ 'card-' + i }}"
+      class="justify-content-center align-items-center user-card"    >
+      <div>
+        <img [src]="user.photo" alt="" height="50px" />
+        <div class="bottom">
+          <h2>{{ user.name }} {{ user.lastname }}</h2>
+          <p>{{ user.gender }}</p>
+          <div class="interests">
+            <button
+              class="btn bg-gradient-primary"
+              *ngFor="let skill of user.skills.slice(0, 5)"
+            >
+              {{ skill }}
+            </button>
+          </div>
+          <div class="interests" *ngIf="user.interests">
+            <button
+              class="btn bg-gradient-info"
+              *ngFor="let interest of user.interests.slice(0, 5)"
+            >
+              {{ interest }}
+            </button>
+          </div>
+          <button class="btn bg-gradient-success mr-5" type="button">
+            <i
+              class="fa-regular fa-circle-check"
+              (click)="keepUser(user.id, user.email)"
+            ></i>
+          </button>
+          <button
+            class="btn bg-gradient-dark mr-5"
+            type="button"
+            (click)="reportUser(user.id); $event.preventDefault()"
+            data-toggle="modal"
+            data-target="#exampleModal4"
+          >
+            <i class="fa-regular fa-flag"></i>
+          </button>
+          <button
+            class="btn bg-gradient-danger"
+            type="button"
+            (click)="removeUser(user.id)"
+          >
+            <i class="fa-regular fa-circle-xmark"></i>
+          </button>
+        </div>
+      </div>
+    </div>
+  </ng-container>
+</div>
+<ng-template #emptyTemplate>
+  <div class="center">
+    <i class="checkmark-icon"></i>
+    <p>All Swiped!</p>
+  </div>
+</ng-template>
+
+<div
+  class="modal fade"
+  id="exampleModal4"
+  tabindex="-1"
+  role="dialog"
+  aria-labelledby="exampleModalLabel"
+  aria-hidden="false"
+>
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Repport</h5>
+        <button
+          type="button"
+          class="close"
+          data-dismiss="modal"
+          aria-label="Close"
+        >
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="card mb-4">
+          <div class="card-body px-0 pt-0 pb-2">
+            <form [formGroup]="matchingForm" (submit)="submitReport()">
+              <div *ngFor="let item of typeSignal" class="d-inline mr-3 mb-2 align-items-center justify-content-center">
+                <label class="alert alert-danger text-danger">
+                  <input type="radio" [value]="item.name" formControlName="typeSignal"> {{ item.name }}
+                </label>
+              </div>
+              <br>
+              <br><br>
+              <button class="btn btn-primary mr-5" [disabled]="!matchingForm.valid" type="submit">
+                Submit Report
+              </button>
+            </form>
+            
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

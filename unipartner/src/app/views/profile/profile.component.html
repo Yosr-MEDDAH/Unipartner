@@ -1,0 +1,183 @@
+<!-- <div class="container">
+  <div
+    class="row align-items-center bg-dark"
+    style="
+      border: 5px #cea4a4 solid;
+      margin-bottom: 301px;
+      border-radius: 10px;
+      max-width: 1000px;
+    "
+  >
+    <div
+      class="col-sm-6 mt-5"
+      style="border-right: 1px solid white; text-align: center"
+    >
+      <img
+        src="{{ user.photo }}"
+        alt=""
+        class="img-cover"
+        style="border-radius: 50%"
+      />
+    </div>
+    <div class="col-sm-4 mt-5" style="text-align: center">
+      <table
+        class="table table-dark"
+        style="
+          border-collapse: separate;
+          border-spacing: 0 1em;
+          text-align: center;
+        "
+      >
+        <tbody>
+          <tr class="table-danger">
+            <th scope="row">Name</th>
+            <td>{{ user.name }}</td>
+          </tr>
+          <tr class="table-danger">
+            <th scope="row">Lastname</th>
+            <td>{{ user.lastname }}</td>
+          </tr>
+          <tr class="table-danger">
+            <th scope="row">Gender</th>
+            <td>{{ user.gender }}</td>
+          </tr>
+          <tr class="table-danger">
+            <th scope="row">Email</th>
+            <td>{{ user.email }}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div> -->
+<!-- 
+<div class="container">
+    <div class="row align-items-center bg-dark" style="border: 5px #cea4a4 solid; margin-bottom: 301px; border-radius: 10px; width: auto;">
+      <div class="col-sm-6 mt-5" style="border-right: 1px solid white; text-align: center; max-width: fit-content;">
+        <img *ngIf="user && user.photo" [src]="user.photo" alt="" class="img-cover" style="border-radius: 50%;">
+        <div *ngIf="!user || !user.photo">
+          <p>Loading...</p>
+        </div>
+      </div>
+      <div class="col-sm-4 mt-5" style="text-align: center;">
+        <table *ngIf="user" class="table table-dark" style="border-collapse: separate; border-spacing: 0 1em; text-align: center;">
+          <tbody *ngIf="user; else noUserData">
+            <tr class="table-danger">
+              <th scope="row">Name</th>
+              <td>{{user.name}}</td>
+            </tr>
+            <tr class="table-warning">
+              <th scope="row">Lastname</th>
+              <td>{{user.lastname}}</td>
+            </tr>
+            <tr class="table-primary">
+              <th scope="row">Gender</th>
+              <td>{{user.gender}}</td>
+            </tr>
+            <tr class="table-warning">
+              <th scope="row">Email </th>
+              <td>{{user.email}}</td>
+            </tr>
+            <tr class="table-success">
+              <th scope="row">Skills</th>
+              <td>{{user.skills}}</td>
+            </tr>
+            <tr class="table-info">
+              <th scope="row">Interests</th>
+              <td>{{user.interests}}</td>
+            </tr>
+            <tr class="table-danger">
+              <th scope="row">Red Flags</th>
+              <td>{{user.redFlags}}</td>
+            </tr>
+            <tr class="table-secondary">
+              <th scope="row">Signals</th>
+              <td>{{user.signals}}</td>
+            </tr>
+          </tbody>
+        </table>
+        <ng-template #noUserData>
+          <p>No user data available.</p>
+        </ng-template>
+      </div>
+    </div>
+  </div>
+   -->
+   <div class="container">
+    <div class="row align-items-center bg-dark" style="border: 5px #cea4a4 solid; margin-bottom: 301px; border-radius: 10px; width: auto;">
+      <div class="col-sm-6 mt-5" style="border-right: 1px solid white; text-align: center; max-width: fit-content;">
+        <img *ngIf="user && user.photo" [src]="user.photo" alt="" class="img-cover" style="border-radius: 50%;">
+        <div *ngIf="!user || !user.photo">
+          <p>Loading...</p>
+        </div>
+      </div>
+      <div class="col-sm-8 mt-5" style="text-align: center;">
+        <table *ngIf="user" class="table table-dark" style="border-collapse: separate; border-spacing: 0 1em; text-align: center;">
+          <tbody *ngIf="user; else noUserData">
+            <tr class="table-danger">
+              <th scope="row">Name</th>
+              <td>{{user.name}}</td>
+            </tr>
+            <tr class="table-warning">
+              <th scope="row">Lastname</th>
+              <td>{{user.lastname}}</td>
+            </tr>
+            <tr class="table-primary">
+              <th scope="row">Gender</th>
+              <td>{{user.gender}}</td>
+            </tr>
+            <tr class="table-warning">
+              <th scope="row">Email </th>
+              <td>{{user.email}}</td>
+            </tr>
+          </tbody>
+        </table>
+        <h3 class="text-light">Skills</h3>
+        <div *ngIf="user && user.skills?.length!=0">
+          <div class="skills-buttons">
+            <button
+              *ngFor="let skill of user.skills" 
+              class="skills-button"
+              type="button"
+            >
+              {{ skill.trim() }}
+            </button>
+          </div>
+        </div>
+        <div *ngIf="user.skills?.length==0" class="text-danger">No skills !</div>
+        <h3 class="text-light">Interests</h3>
+        <div *ngIf="user && user.interests?.length!=0">
+          <div class="skills-buttons">
+            <button
+              *ngFor="let interest of user.interests" 
+              class="skills-button"
+              type="button"
+            >
+              {{ interest.trim() }}
+            </button>
+          </div>
+        </div>
+        <div *ngIf="user.interests?.length==0" class="text-danger">No Interests !</div>
+        <h3 class="text-light">Red Flags</h3>
+        <div *ngIf="user && user.redFlags?.length!=0">
+          <div class="skills-buttons">
+            <button
+              *ngFor="let redFlag of user.redFlags" 
+              class="skills-button"
+              type="button"
+            >
+              {{ redFlag.trim() }}
+            </button>
+          </div>
+        </div>
+        <div *ngIf="user.redFlags?.length==0" class="text-danger">No Red flags !</div>
+     
+        
+      </div>
+    </div>
+  </div>
+  
+  <ng-template #noUserData>
+    <p>No user data available.</p>
+  </ng-template>
+  

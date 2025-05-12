@@ -1,0 +1,235 @@
+
+    section {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background: linear-gradient(to bottom, #cd65659f, #703838);
+    }
+    section .color {
+    position: absolute;
+    filter: blur(150px);
+    }
+    section .color:nth-child(1) {
+    top: -350px;
+    width: 600px;
+    height: 600px;
+    background: #ff5757;
+    }
+    section .color:nth-child(2) {
+    bottom: -150px;
+    left: 100px;
+    width: 500px;
+    height: 500px;
+    background: #aca5a7;
+    }
+    section .color:nth-child(3) {
+    bottom: 50px;
+    right: 100px;
+    width: 300px;
+    height: 300px;
+    background: #703838;
+    }
+    .box {
+    position: relative;
+    }
+    .box .square {
+    position: absolute;
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(5px);
+    box-shadow: 0 25px 45px rgba(0, 0, 0, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    border-right: 1px solid rgba(255, 255, 255, 0.2);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 10px;
+    animation: animate 10s linear infinite;
+    animation-delay: calc(-1s * var(--i));
+    }
+    @keyframes animate {
+    0%,
+    100% {
+        transform: translateY(-40px);
+    }
+    50% {
+        transform: translateY(40px);
+    }
+    }
+    .box .square:nth-child(1) {
+    top: -50px;
+    right: -60px;
+    width: 100px;
+    height: 100px;
+    }
+    .box .square:nth-child(2) {
+    top: 150px;
+    left: -100px;
+    width: 120px;
+    height: 120px;
+    z-index: 2;
+    }
+    .box .square:nth-child(3) {
+    bottom: 50px;
+    right: -60px;
+    width: 80px;
+    height: 80px;
+    z-index: 2;
+    }
+    .box .square:nth-child(4) {
+    bottom: -80px;
+    left: 100px;
+    width: 50px;
+    height: 50px;
+    }
+    .box .square:nth-child(5) {
+    top: -80px;
+    left: 140px;
+    width: 60px;
+    height: 60px;
+    }
+
+    .form .inputBox input {
+    width: 100%;
+    background: rgba(255, 255, 255, 0.2);
+    border: none;
+    outline: none;
+    padding: 20px;
+    border-radius: 35px;
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    border-right: 1px solid rgba(255, 255, 255, 0.2);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+    font-size: 16px;
+    letter-spacing: 1px;
+    color: #fff;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+    }
+    .container {
+    display: flex;
+    padding: 40px;
+    border-radius: 20px;
+    border: 8px solid transparent;
+    box-shadow: -5px -5px 15px rgba(255, 255, 255, 0.1),
+        5px 5px 15px rgba(0, 0, 0, 0.35),
+        inset -5px -5px 15px rgba(255, 255, 255, 0.1),
+        inset 5px 5px 15px rgba(0, 0, 0, 0.35);
+    }
+    .container .form {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 25px;
+    }
+    .container .form h2 {
+    color: #fff;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    }
+    .container .form .inputBox {
+    position: relative;
+    width: 300px;
+    }
+    .container .form .inputBox input {
+    padding: 12px 10px 12px 48px;
+    border: none;
+    width: 100%;
+    background: transparent;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    color: #fff;
+    font-weight: 300;
+    border-radius: 25px;
+    font-size: 1em;
+    box-shadow: -5px -5px 15px rgba(255, 255, 255, 0.1),
+        5px 5px 15px rgba(0, 0, 0, 0.35);
+    transition: 0.5s;
+    outline: none;
+    }
+    .container .form .inputBox span {
+    position: absolute;
+    left: 0;
+    padding: 12px 10px 12px 48px;
+    pointer-events: none;
+    font-size: 1em;
+    font-weight: 300;
+    transition: 0.5s;
+    letter-spacing: 0.05em;
+    color: rgba(255, 255, 255, 0.5);
+    }
+    .container .form .inputBox input:valid ~ span,
+    .container .form .inputBox input:focus ~ span {
+    color: #fff;
+    border: 1px solid #fff;
+    background: #cd6565c7;
+    transform: translateX(25px) translateY(-7px);
+    font-size: 0.6em;
+    padding: 0 8px;
+    border-radius: 10px;
+    letter-spacing: 0.1em;
+    }
+    .container .form .inputBox input:valid,
+    .container .form .inputBox input:focus {
+    border: 1px solid #fff;
+    }
+    .container .form .inputBox i {
+    position: absolute;
+    top: 15px;
+    left: 16px;
+    width: 25px;
+    padding: 2px 0;
+    padding-right: 8px;
+    color: #fff;
+    border-right: 1px solid #fff;
+    }
+    .container .form .inputBox input[type="submit"] {
+    background: #fff;
+    color: #423a3c;
+    padding: 10px 0;
+    font-weight: 500;
+    cursor: pointer;
+    box-shadow: -5px -5px 15px rgba(255, 255, 255, 0.1),
+        5px 5px 15px rgba(0, 0, 0, 0.35),
+        inset -5px -5px 15px rgba(255, 255, 255, 0.1),
+        inset 5px 5px 15px rgba(0, 0, 0, 0.35);
+    }
+    .container .form p {
+    color: rgba(255, 255, 255, 0.5);
+    font-size: 0.75em;
+    font-weight: 300;
+    }
+    .container .form p a {
+    font-weight: 500;
+    color: #fff;
+    }
+    #pswd {
+    transform: translate(1000%, 0);
+    cursor: pointer;
+    border: none;
+    }
+    .container .form .inputBox input[type="submit"]:disabled {
+    background-color: #eee;
+    cursor: not-allowed;
+    }
+    .invalid-msg {
+    display: block;
+    width: 100%;
+    margin-top: 0.25rem;
+    font-size: 80%;
+    color: rgb(104, 18, 5);
+    text-shadow: 2px 2px 4px rgba(255, 255, 255, 0.5);
+    }
+
+    .invalid-msg::before {
+    content: "\f06a";
+    font-family: "Font Awesome 5 Free";
+    font-weight: 900;
+    margin-right: 0.5rem;
+    color: rgb(104, 18, 5);
+    }
+
+    input.ng-invalid.ng-dirty {
+    border: 1px solid rgb(104, 18, 5) !important;
+    box-shadow: 0 0 0 0.2rem rgba(220, 53, 69, 0.25) !important;
+    }
+    input.ng-valid {
+    border: 1px solid rgb(255, 255, 255) !important;
+    box-shadow: 0 0 0 0.2rem rgba(3, 250, 98, 0.25) !important;
+    }

@@ -1,0 +1,93 @@
+header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 56px;
+  background-color: transparent;
+  margin-bottom: 20px;
+}
+
+header div {
+  font-size: 1.5em;
+}
+
+.users {
+  display: flex;
+  flex-direction: column; /* Display users in a column */
+  align-items: center;
+  justify-content: flex-start;;
+  height: calc(100vh - 56px);
+}
+
+.users > div {
+  margin-bottom: 20px; /* Add some space between user cards */
+  text-align: center;
+}
+
+.users > div img {
+  width: 300px; /* Make image width 100% of the container */
+  height: 300px;
+  border-radius: 16px;
+  object-fit: cover;
+  object-position: top;
+  mask-image: linear-gradient(to bottom, #000000, #000000, transparent);
+}
+
+.users > div .bottom {
+  background-color: rgba(112, 75, 77, 0.945);
+  color: white;
+  padding: 20px;
+  width: 100%; /* Make .bottom width 100% of the container */
+  border-radius: 0 0 16px 16px; /* Add border-radius to the bottom corners */
+}
+
+.users > div h2 {
+  font-size: x-large;
+}
+
+.users > div p {
+  font-size: large;
+}
+
+.icon.danger {
+  color: red;
+}
+
+.icon.primary {
+  color: blue;
+}
+
+.center {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 100%;
+  text-align: center;
+}
+
+.center i.checkmark-icon {
+  font-size: 45px;
+}
+
+.users .swipe-active {
+  cursor: grab;
+}
+
+.users .swipe-active:active {
+  cursor: grabbing;
+}
+
+/* Rest of your styles remain the same */
+.interests {
+  margin-top: 10px; 
+}
+
+.interests button {
+  margin-right: 5px; /* Add right margin to separate interest buttons or tags */
+  font-size: 12px; /* Adjust the font size to make them smaller */
+}
+.user-card {
+  position: absolute;
+  /* Ajoute d'autres styles selon tes besoins */
+}

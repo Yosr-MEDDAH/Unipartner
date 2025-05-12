@@ -1,0 +1,110 @@
+    <section>
+    <div class="color"></div>
+    <div class="color"></div>
+    <div class="color"></div>
+    <div class="box">
+        <div class="square" style="--i: 0"></div>
+        <div class="square" style="--i: 1"></div>
+        <div class="square" style="--i: 2"></div>
+        <div class="square" style="--i: 3"></div>
+        <div class="square" style="--i: 4"></div>
+        <div class="container">
+       
+        
+           <form
+           name="form"
+            class="form signup"
+            [formGroup]="signinForm"
+            (ngSubmit)="onSubmit()"
+        >
+            <h2>Signin</h2>
+            
+
+            <div class="inputBox">
+            <input type="text" formControlName="email" required name="email"/>
+            <i class="fa-regular fa-envelope"></i>
+            <span>email address</span>
+            <div
+                *ngIf="
+                signinForm.get('email')!.hasError('required') &&
+                signinForm.get('email')!.touched
+                "
+                class="invalid-msg"
+            >
+                Email is required.
+            </div>
+            <div
+                class="invalid-msg"
+                *ngIf="signinForm.get('email')!.hasError('email')"
+            >
+                Invalid email address.
+            </div>
+            <div
+                class="invalid-msg"
+                *ngIf="signinForm.get('email')!.hasError('pattern')"
+            >
+                Email does not match the required pattern.
+            </div>
+            </div>
+            <div class="inputBox">
+            <input
+                [type]="passwordVisible ? 'text' : 'password'"
+                formControlName="pwd"
+                required
+                name="pwd"
+            />
+            <i class="fa-solid fa-lock"></i>
+            <span> password</span>
+            <i
+                *ngIf="passwordVisible; else hideIcon"
+                class="fa fa-eye"
+                id="pswd"
+                (click)="togglePasswordVisibility()"
+            ></i>
+            <ng-template #hideIcon
+                ><i
+                class="fa-solid fa-eye-slash"
+                id="pswd"
+                (click)="togglePasswordVisibility()"
+                ></i
+            ></ng-template>
+            
+            <div
+                *ngIf="
+                signinForm.get('pwd')!.hasError('required') &&
+                signinForm.get('pwd')!.touched
+                "
+                class="invalid-msg"
+            >
+                Password is required.
+            </div>
+            <div
+                class="invalid-msg"
+                *ngIf="signinForm.get('pwd')!.hasError('minlength')"
+            >
+                Password must be at least 8 characters long.
+            </div>
+            <!-- <div
+                class="invalid-msg"
+                *ngIf="
+                signinForm.get('password')!.hasError('passwordStrength') &&
+                signinForm.get('password')!.touched
+                "
+            >
+                Password must contain at least one uppercase letter, one lowercase
+                letter, and one number.
+            </div> -->
+            </div>
+            
+
+           
+            <div class="inputBox">
+            <input type="submit" value="Login" [disabled]="!signinForm.valid" />
+            </div>
+            <p>Don't have an account? <a routerLink="/register">Signup</a></p>
+            
+        </form>
+       
+        </div>
+    </div>
+    </section>
